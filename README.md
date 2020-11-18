@@ -1,5 +1,7 @@
 # fids
 
+fids - fractal image design system using quil
+
 A Quil sketch designed to ... well, that part is up to you.
 
 ## Usage

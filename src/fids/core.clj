@@ -32,6 +32,39 @@
       ; Draw the circle.
       (q/ellipse x y 100 100))))
 
+(defn matrix [a b e c d f]
+  [[a b e]
+   [c d f]])
+
+(defn iter [matrix- x y]
+  (let [[a b e] (first matrix-)
+        [c d f] (second matrix-)]
+    [(+ (* a x) (* b y) e)
+     (+ (* c x) (* d y) f)]))
+
+(def m0 (matrix 0.5 0.5 0.0
+                0.5 0.5 0.0))
+(def m1 (matrix 0.5 0.5 0.5
+                0.5 0.5 0.0))
+(def m2 (matrix 0.5 0.5 0.25
+                0.5 0.5 0.5))
+
+(def transforms [m0 m1 m2])
+
+(def basis [[1.0 0.0]
+            [0.0 0.0]
+            [0.0 1.0]])
+ (for [m transforms]
+    (for [b basis]
+      {b
+       (iter m (first b) (second b))}))
+
+
+
+
+
+
+
 
 (q/defsketch fids
   :title "You spin my circle right round"
